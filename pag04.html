@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="style2.css">
+    <title>Criar personagem</title>
+</head>
+<style>
+.box{
+	width:100%;
+	height:450px;
+	background-color:#ccc;
+	border:1px solid;
+	padding:2px;
+	border-radius: 10px;
+}
+.box1{
+	width:500px;
+	height:100px;
+	background-color:#666;
+	border-radius: 10px;
+	height:200px;
+}
+
+.radio {
+  float:left;
+  width: 100%;
+  padding: 2px 20px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=number] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=text], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=button] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+</style>
+<script>
+function criarPersonagem(){
+	var id = Math.floor(Math.random() * 100);
+	var nacao = document.getElementsByName('nacao');
+	var descricao = document.getElementsByName('descricao')[0].value;
+	for(var i=0;i<nacao.length;i++){
+	if(nacao[i].checked){
+	var selecionado_nacao = nacao[i].value;
+	}
+}
+	//var nacao = document.getElementsByName('nacao')[0].value;
+	var casa = document.getElementsByName('casa')[0].value;
+	const json = [{"id": id, "nacao": selecionado_nacao, "casa": casa,
+	"descricao": descricao,  "personagens-saga":  ["FULANO",  "CICLADO",  "BELTRANO"], 
+	"imagem": "URL-DA-IMAGEM"}]
+	console.log(json);
+}
+
+var line = 1;
+function addInput(divName) {
+  var newdiv = document.createElement('div');
+  newdiv.innerHTML  = '['+line +']';
+//  newdiv.innerHTML += '<input type="text" name="text'+line +'_1" id="text'+line +'_1">';
+newdiv.innerHTML += '<div class="box"><form action="" id="formPersonagem'+line +'"><legend style="font-size:18px;"><b>Criar Personagem</b></legend>                 <br><fieldset style="width:40%;float:left;border:0px;"> 			      <div class="inputBox">                     <input type="checkbox" id="horns" name="horns">                     <label for="nome">Incluir esse personagem na batalha</label></br> 				    <label for="nome">Casa</label>                     <input type="text" name="casa" id="casa" value="" class="inputUser" required> 					</br> 					<label for="nome">Descrição</label>                     <input type="text" name="descricao" id="descricao" value="" class="inputUser" required> 					</br><label for="nome">Personagem Saga</label>                     <input type="text" name="personagem" id="personagem" value="" class="inputUser" required> 				<P>Nação</P> 				<hr> 				<p>                 <input type="radio" id="personagem1" name="nacao" value="Anão"/>                 <label for="">Anão</label>                 <input type="radio" id="personagem2" name="nacao" value="Hobbit"/>                 <label for="">Hobbit</label>                 <input type="radio" id="personagem3" name="nacao" value="Cavaleio de Rohan"/>                 <label for="">Cavaleio de Rohan</label> 				</p> 				<p>                 <input type="radio" id="personagem" name="nacao" value="Guereiro de Gondor"/>                 <label for="">Guereiro de Gondor</label>                 <input type="radio" id="personagem" name="nacao" value="Elfo da Floresta"/>                 <label for="">Elfo da Floresta</label> 				</p> 				<p>                 <input type="radio" id="personagem" name="nacao" value="Elfo de Lothlórien"/>                 <label for="">Elfo de Lothlórien</label>                 <input type="radio" id="personagem" name="nacao" value="Orc Snaga"/>                 <label for="">Orc Snaga</label>                 <input type="radio" id="personagem" name="nacao" value="Uruk-hai"/>                 <label for="">Uruk-hai</label>   				</p> 			</div>             </fieldset> 			<fieldset style="width:50%;float:right;padding:2px;border:0px;"> 			 <div class="inputBox"> 				<h3>Habilidades</h3> 				<label for="">Força:</label> 				<input type="number" id="forca" name="forca" value=""/></br> 				<label for="">Presição:</label> 				<input type="number" id="precisao" name="precisao" value=""/></br> 				<label for="">Velocidade:</label> 				<input type="number" id="velocidade" name="velocidade" value=""/></br> 				<label for="">Armadura:</label> 				<input type="number" id="armadura" name="armadura" value=""/></br> 				<label for="">Recuperação:</label> 				<input type="number" id="recuperacao" name="recuperacao" value=""/></br> 				</div> 			</fieldset> 			</br> 			<fieldset style="float:right;border:0px;"> 			<input type="button" id="criar1" name="criar1" value="Criar Personagem 1" onclick="criarPersonagem()"/> 			</fieldset>         </form>      </div>';
+
+  document.getElementById(divName).appendChild(newdiv);
+  line++;
+}
+addInput('lines');
+
+</script>
+<body>
+<div class="navbar" style="margin-top:-5px;">
+  <a href="landing page.html">Home</a>
+  <a href="pag04.html">Criar Personagem</a>
+  <a href="pag02.html">Os personagens e o cenário</a>
+  <a href="pag03.html">Sobre</a>
+</div></br></br></br></br>
+    <div class="box">
+        <form action="" id="formPersonagem1">
+		<legend style="font-size:18px;"><b>Criar Personagem</b></legend>
+                <br><fieldset style="width:40%;float:left;border:0px;">
+			      <div class="inputBox">
+                    <input type="checkbox" id="horns" name="horns">
+                    <label for="nome">Incluir esse personagem na batalha</label></br>
+				    <label for="nome">Casa</label>
+                    <input type="text" name="casa" id="casa" value="" class="inputUser" required>
+					</br>
+					<label for="nome">Descrição</label>
+                    <input type="text" name="descricao" id="descricao" value="" class="inputUser" required>
+					</br><label for="nome">Personagem Saga</label>
+                    <input type="text" name="personagem" id="personagem" value="" class="inputUser" required>
+				<P>Nação</P>
+				<hr>
+				<p>
+                <input type="radio" id="personagem1" name="nacao" value="Anão"/>
+                <label for="">Anão</label>
+                <input type="radio" id="personagem2" name="nacao" value="Hobbit"/>
+                <label for="">Hobbit</label>
+                <input type="radio" id="personagem3" name="nacao" value="Cavaleio de Rohan"/>
+                <label for="">Cavaleio de Rohan</label>
+				</p>
+				<p>
+                <input type="radio" id="personagem" name="nacao" value="Guereiro de Gondor"/>
+                <label for="">Guereiro de Gondor</label>
+                <input type="radio" id="personagem" name="nacao" value="Elfo da Floresta"/>
+                <label for="">Elfo da Floresta</label>
+				</p>
+				<p>
+                <input type="radio" id="personagem" name="nacao" value="Elfo de Lothlórien"/>
+                <label for="">Elfo de Lothlórien</label>
+                <input type="radio" id="personagem" name="nacao" value="Orc Snaga"/>
+                <label for="">Orc Snaga</label>
+                <input type="radio" id="personagem" name="nacao" value="Uruk-hai"/>
+                <label for="">Uruk-hai</label>  
+				</p>
+			</div>
+            </fieldset>
+			<fieldset style="width:50%;float:right;padding:2px;border:0px;">
+			 <div class="inputBox">
+				<h3>Habilidades</h3>
+				<label for="">Força:</label>
+				<input type="number" id="forca" name="forca" value=""/></br>
+				<label for="">Presição:</label>
+				<input type="number" id="precisao" name="precisao" value=""/></br>
+				<label for="">Velocidade:</label>
+				<input type="number" id="velocidade" name="velocidade" value=""/></br>
+				<label for="">Armadura:</label>
+				<input type="number" id="armadura" name="armadura" value=""/></br>
+				<label for="">Recuperação:</label>
+				<input type="number" id="recuperacao" name="recuperacao" value=""/></br>
+				</div>
+			</fieldset>
+			</br>
+			<fieldset style="float:right;border:0px;">
+			<input type="button" id="criar1" name="criar1" value="Criar Personagem 1" onclick="criarPersonagem()"/>
+			</fieldset>
+        </form>
+     </div> 
+        <hr />
+		  <div id="lines"></div>
+  <button type="button" onclick="addInput('lines')">+</button>
+  <input type="submit" value="Enviar">
+		</br>
+		 <hr />
+	<div class="footer">
+            <p>Cursos de TI da Estácio de Brasilia em 2022.1 (TIEB 2022.1)
+               todos os direitos reservados
+               (terra-Media locais e personagens são direito de https://www.middleearth.com/home.html)
+			   </p>
+</div>
+</body>
+</html>
